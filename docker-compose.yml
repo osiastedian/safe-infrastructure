@@ -111,6 +111,10 @@ services:
     image: safeglobal/web-core:${UI_VERSION}
     env_file:
       - container_env_files/ui.env
+    volumes:
+      - ./docker/web-core/v1.3.0:/app/v1.3.0
+      - ./ui-entrypoint.sh:/app/ui-entrypoint.sh
+    entrypoint: ["/bin/sh", "./ui-entrypoint.sh"]
     depends_on:
       - nginx
     ports:
